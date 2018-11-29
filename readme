@@ -1,0 +1,68 @@
+KISS STRIP GAME ENGINE (KSGE)
+
+ABOUT
+KISS STRIP GAME ENGINE (I will call it KSGE) is a free and opensource strip game engine done keeping in mind the KISS philosophy (Keep It Simple Stupid) with the goal to realize an universal engine suitable for any kind of strip game. It is based on Freebasic Compiler and libVLC so it can be compiled easily on Linux and Windows and I think (but not tested) also on Mac.
+
+You wanna realize a strip poker game or something similar? good news, the part of the game wich should play the media content in an intelligent way is already done and working plus is completely free and opensource. You can adopt any kind of card game such as for example poker, blackjack, hilo ecc.. or any kind of game more in general for example, chess, dice, question text game, fighting games, sports games.... anything you want.
+
+Of course the easiest way would be use a free and opersource game and do some little changes to let it talk to KSGE.
+
+At this point the only thing that remains to do is the most important thing for a strip game, the media content. The only real thing where energy should be put. This is the final goal of KSGE, let people concentrate only on the media content, make it wonderful, edit it with passion, cut the scenes in the same way you cook a beautiful and good tasting sushi; because you have all the instruments in your hands now, so you can spend all your time in the most exciting part of the deal.
+
+HOW IT WORKS
+but how works KSGE?
+KSGE works in a really simple way, for first it expects a folder containing some media content; any videoclips playable by VLC media player... at least one per group named as following (X = 1 to 99)
+
+enterX      a clip where the opponent enter in the scene, for example she enter and present herself
+stageXcarX  a clip of the stageX where the opponent takes cards (of course in case of a card game)
+stageXactX  a clip of the stageX where the opponent do some action (for example smile, talk, drink ecc ecc ecc )
+stageXwinX  a clip of the stageX where the opponent react after a winning hand 
+stageXlosX  a clip of the stageX where the opponent react after loosing an hand
+stageXrisX  a clip of the stageX where the opponent is in the risky situation to loose a piece of clothing, clips where lot of emotion should be carry
+stageXoffX  a clip of the stageX where the opponent remove a piece of clothing
+endX    a final clip where for example the model act and pose naked :)
+
+as you can see for any group is possible to insert more then one clip, this is true also for the strip scenes/entering scenes/end scenes. KSGE would choose random what clip to play, this is for the maximum game longevity keeping the game different each time played. this is an unique feature i think. so for example a very simple strip game with only 2 stages, with one strip scene per stage, with 2 scenes for act and ris would have the following files:
+enter1
+stage1car1
+stage1act1
+stage1act2
+stage1win1
+stage1los1
+stage1ris1
+stage1ris2
+stage1off1
+stage2car1
+stage2act1
+stage2act2
+stage2win1
+stage2los1
+stage2ris1
+stage2ris2
+stage2off1
+end1
+
+when KSGE is started it will play an enter scene, and then for the stage1 a card scene, and then will loop into act scenes of stage1 waiting for instruction from the game (for example a poker game). KSGE waits instruction and give also feedbacks on an "action" text file that will be created in the videoclip folder. The file is read every second, so for example if on the file the poker game writes "win" then KSGE will play a win clip, and after that if no more instruction are received KSGE will play a card clip and then again play an act clip looping.
+
+Another example: if the action file is filled by the poker game with "off", KSGE will play a strip scene (stageXoffX), and then if exists, will play the car scene of the next stage; if no more stages exist it will loop into the end scenes.
+
+prior to play the clip KSGE reads the files on the clip folder to know for each group how many files are present, and then play randomly one of them. KSGE also, when starting, will determine how many stages the game has, so it would play the end scenes at the right moment (after the last strip scene). 
+
+SO WHAT YOU NEED TO DO?
+You should only put the clips named correctly, run KSGE with the right parameter (clip folder), have a game that will write the action file correctly and if needed read it to understand when ksge as finished playing the clip. that's all.
+
+For better understand you can also try KSGE standalone lauching it and writing the instrucions in the action file manually (this is also a good option for game cheating of course ;))
+
+I hope this engine will help people to produce more and more HQ indie strip games, and I hope that the engine would be forked and improved. good luck!
+
+
+
+
+
+
+
+
+
+
+
+
