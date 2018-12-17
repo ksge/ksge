@@ -1,4 +1,4 @@
-' KSGE K.I.S.S. STRIP GAME ENGINE VERSION 1.0 20181129
+' KSGE K.I.S.S. STRIP GAME ENGINE VERSION 1.1 20181129
 ' A STRIP GAME ENGINE BUILD WITH FREEBASIC AND BASED ON LIBVLC 
 ' COMPILE WITH FREEBASIC COMPILER (FBC) TESTET WITH VERSION 1.0.5 ON LINUX (UBUNTU 18.04) AND WINDOWS 10
 ' COMPILE WITH COMMAND FBC.EXE -s gui ksge.bas
@@ -6,6 +6,10 @@
 ' ON WINDOWS files libvlc.dll, libvlccore.dll and folder "plugins" from VLC media player folder should be placed in the source code folder
 ' AFTER COMPILED RUN THE BINARY WITH THE CORRECT PARAMETERS: KSGE name/foler of media content      debug flag (0=no 1=yes)       clip file extension
 ' example; ksge "marylin" 0 "mkv"
+'
+' CHANGELOG:
+' VERSION 1.0 20181129 First working version
+' VERSION 1.1 20181216 if a clip isn't found the game tries to go further
 print "KSGE version 1.0 20181129"
 
 
@@ -183,14 +187,20 @@ if currentstage > 0 then
 		actiondone ("act") 'after car... model should act...
 	end select
 	
+	
+	
+	
 	if clipcount = 0 and currentstage <= totalstages then
 		if command(2) = "1" then print "ERROR CLIP NOT FOUND!!!!"
 		if command(2) = "1" then print cliptoplay
-		sleep
+		'sleep
 	end if
 	
 	mediaFileName = cliptoplay
 	lastclipplayed =cliptoplay
+	
+	
+	
 	
 end if
 
@@ -204,7 +214,8 @@ if currentstage = 0 then
 end if
 	
    if command(2) = "1" then print mediaFileName 'debug
-   if play(mediaFileName, pInstance, pPlayer) < 0 then exit while ' <------- HERE STARTS PLAY CLIP
+   'if play(mediaFileName, pInstance, pPlayer) < 0 then exit while ' <------- HERE STARTS PLAY CLIP
+   if play(mediaFileName, pInstance, pPlayer) < 0 then print mediaFileName, "MAYBE NOT FOUND???" ' <------- HERE STARTS PLAY CLIP
    open "action" FOR INPUT AS #8 LEN = 3
    input #8, action
    CLOSE #8
