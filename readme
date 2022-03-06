@@ -1,4 +1,6 @@
 KISS STRIP GAME ENGINE (KSGE)
+if you want to easily create your own strip poker game check Kiss Strip Poker Maker https://github.com/ksge/kspm
+KSPM also includes last version of KSGE that support encrypted media content
 
 ABOUT
 KISS STRIP GAME ENGINE (I will call it KSGE) is a free and opensource strip game engine done keeping in mind the KISS philosophy (Keep It Simple Stupid) with the goal to realize an universal engine suitable for any kind of strip game. It is based on Freebasic Compiler and libVLC so it can be compiled easily on Linux and Windows and I think (but not tested) also on Mac.
